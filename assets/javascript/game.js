@@ -18,8 +18,9 @@ var alphabet = [
 	var guessLeft = 6;
 	var randomNum;
 	var randomWord;
-	// var guessedLetters = [];
 	var correctWordCount = 0;
+	var winHang;
+	
 
 function selectWord(){
 	//assign a random number equal to or less than the length of wordChoice array, 
@@ -29,19 +30,21 @@ function selectWord(){
 	//use randomNum as index of wordChoice array
 	 randomWord = wordChoices[randomNum];
 
+
 	//add "_" and " " to letterCount array based on length of randomWord
 	for (var i = 0; i < randomWord.length; i++){
 		if (randomWord[i] === " "){
 			//weird \xa0 in order to make a space in javascript show in HTML
 			letterCount.push("\xa0");
+			hitCount++;
 		}
 		else {
 			letterCount.push("  _  ");
 		}
 	}
 	return(randomWord);
+	return(hitCount);
 }
-
 
 //show the guess area and create a function to be used to 
 //"re-print" the area as correct guesses are made
@@ -64,7 +67,6 @@ document.onkeyup = function(event) {
   for (var l = 0; l < alphabet.length; l++){
   	if(userInput === alphabet[l]){
   
-  // console.log(letterCount);
 			//check for match and update letterCount with the correct user guess
 		  for (var j = 0; j < randomWord.length; j++){
 		  	if(randomWord[j] === userInput && " " + userInput + " " !== letterCount[j]){
@@ -80,13 +82,12 @@ document.onkeyup = function(event) {
 		  			showLetterCount();
 
 		  		hitCount++;
-		  		// console.log(hitCount);
-		  		// console.log(letterCount);
 
 		  	}
 		  	if(randomWord.length === hitCount){
-					alert("You have guessed correctly!!!")
-		 			// endHit();
+				winHang = document.getElementById("winHang");
+					winHang.innerHTML=("You have guessed correctly!!!");
+		 			setTimeout(endHit, 2000);
 				}
 			}	
 		  
@@ -105,33 +106,46 @@ document.onkeyup = function(event) {
 		  	hangman.src = "assets/images/hangman"+missCount+".png";
 		  }
 			if (missCount === 6){
-		  		alert("You are hanged!!!")
-		  		// endMiss();
+		  		winHang = document.getElementById("winHang");
+		  			winHang.innerHTML=("You are hanged!!!");
+		  			setTimeout(endMiss, 1000);
 		  }	 
 		}
 	}
 }
+	function endMiss(){
+		document.getElementById("misses").innerHTML="Wrong Letters: ";
+		letterCount = [];
+		missCount = 0;
+		guessLeft = 6;
+		hitCount = 0;
+		document.getElementById("guessLeft").innerHTML = ("Remaining Guesses: " + guessLeft);
+		document.getElementById("letterSpot").innerHTML="";
+		document.getElementById("hangman");
+		  	hangman.src = "assets/images/hangman"+0+".png";
+		selectWord();
+		showLetterCount();
+	}
 
-	// function endMiss(){
-	// 	document.getElementById("letterSpot").innerHTML="";
-	// 	selectWord();
-	// 	showLetterCount();
-	// }
-
-	// function endHit(){
-	// 	document.getElementById("letterSpot").innerHTML="";
-	// 	correctWordCount++
-	// 	document.getElementById("wordsSolved").innerHTML=("Number of words solved correctly: " + correctWordCount);
-	// 	selectWord();
-	// 	showLetterCount();
-	// }
+	function endHit(){
+		document.getElementById("misses").innerHTML="Wrong Letters: ";
+		correctWordCount++
+		letterCount = [];
+		missCount = 0;
+		guessCount = 0;
+		hitCount = 0;
+		guessLeft = 6;
+		document.getElementById("guessLeft").innerHTML = ("Remaining Guesses: " + guessLeft);
+		document.getElementById("letterSpot").innerHTML="";
+		document.getElementById("wordsSolved").innerHTML=("Number of words solved correctly: " + correctWordCount);
+		document.getElementById("hangman");
+		  	hangman.src = "assets/images/hangman"+0+".png";
+		selectWord();
+		showLetterCount();
+	}
 
 function start(){
 	selectWord();
 	showLetterCount();
 }
 window.onload = start;
-
-
-
-
