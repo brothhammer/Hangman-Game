@@ -133,6 +133,7 @@ document.onkeyup = function(event) {
 		guessCount = 0;
 		document.getElementById("guessLeft").innerHTML = ("Remaining Guesses: " + guessLeft);
 		document.getElementById("letterSpot").innerHTML="";
+		document.getElementById("winHang").innerHTML="";
 		document.getElementById("hangman");
 		  	hangman.src = "assets/images/hangman"+0+".png";
 		selectWord();
@@ -150,6 +151,7 @@ document.onkeyup = function(event) {
 		document.getElementById("guessLeft").innerHTML = ("Remaining Guesses: " + guessLeft);
 		document.getElementById("letterSpot").innerHTML="";
 		document.getElementById("wordsSolved").innerHTML=("Number of words solved correctly: " + correctWordCount);
+		document.getElementById("winHang").innerHTML=("");
 		document.getElementById("hangman");
 		  	hangman.src = "assets/images/hangman"+0+".png";
 		selectWord();
