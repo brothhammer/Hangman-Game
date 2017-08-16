@@ -3,40 +3,91 @@
   <head>
     <meta charset="UTF-8">
     <title>Hangman Game</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
   </head>
   <body>
+		
+		<audio id="showMe">
+			<source src="assets/audio/Show_me_what_you_got!.wav" type="audio/wav">
+		</audio>
 
-    <h1>Hangman!<br>
-    A stick figures most dangerous guessing game...</h1>
+		<audio id="riggity">
+			<source src="assets/audio/Riggity.wav" type="audio/wav">
+		</audio>
 
-	<h3>Use the keyboard to guess letters</h3>
-	<h2>Press any letter key to register your first guess</h2>
+		<audio id="yesF">
+			<source src="assets/audio/yes_fuck_you_god_not_today_bitch.wav" type="audio/wav">
+		</audio>
 
-	<br>
+		<audio id="meeSeeks">
+			<source src="assets/audio/meeSeeks.wav" type="audio/wav">
+		</audio>
 
-	<p id="letterSpot">
-	</p>
+  	<nav class="navbar navbar-default">
+  		<div class="container">
+  			<div class="navbar-header-center">
+					<h1>Hangman!</h1>
+				</div>
+				<div class="navbar-right">
+	    		<!-- <h2>A stick figures most dangerous guessing game...
+	    		</h2> -->
+	    	</div>
+	    </div>
+	   </nav>
 
-	<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12" align="center">
+					<h2>Will you help save Rick? 
+					</h2>
+					<h3>Press any letter to get started</h3>
+				</div>
+			</div>
+		</div>
 
-	<form>
-		<p id="misses">Wrong Letters:</p>
 		<br>
-		<p id="guessLeft">Remaining Guesses: 6</p>
-		<br>
-		<p id="winHang"></p>
-		<img src="assets/images/hangman0.png" id="hangman">
 
-		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12" align="center">
+					<h3 id="letterSpot"></h3>
 
-		<p id="wordsSolved">Number of words solved correctly:</p>
+					<br>
 
-		<input name="refresh" type="button" value="New Game" onClick="location.reload()">
-	</form>
-    
-    <script src="assets/javascript/game.js">
+					<form>
+						<p id="misses">Wrong Letters:</p>
+						<br>
+						<p id="guessLeft">Remaining Guesses: 6</p>
+						<br>
+						<p id="winHang"></p>
+						<img src="assets/images/hangman0.png" id="hangman">
 
-    </script>
+						<br>
+
+						<p id="wordsSolved">Number of words solved correctly:</p>
+
+					</form>
+
+					<br>
+
+					<img src="assets/images/BTTF.jpeg" id="dolorean" onClick="location.reload()">
+
+					<!-- <img src="assets/images/meeSeeks.jpeg" id="meeSeeks" onClick=meeSeeks.play()> -->
+
+					<p>Click the Dolorean to reset the game</p>
+
+				</div>
+			</div>
+		</div>	
+
+	<script src="assets/javascript/game.js">
+	</script>
 
   </body>
 </html>

@@ -1,3 +1,10 @@
+var showMe = document.getElementById("showMe");
+var riggity = document.getElementById("riggity");
+var yesF = document.getElementById("yesF")
+function playAudio(audio) {
+	audio.play();
+}
+playAudio(showMe);
 //word choices for the computer
 var wordChoices = [
 		["h", "y", "p", "e", "r", " ", "t", "e", "x", "t"], 
@@ -87,7 +94,8 @@ document.onkeyup = function(event) {
 		  	if(randomWord.length === hitCount){
 				winHang = document.getElementById("winHang");
 					winHang.innerHTML=("You have guessed correctly!!!");
-		 			setTimeout(endHit, 2000);
+		 			playAudio(yesF);
+		 			setTimeout(endHit, 2500);
 				}
 			}	
 		  
@@ -108,7 +116,8 @@ document.onkeyup = function(event) {
 			if (missCount === 6){
 		  		winHang = document.getElementById("winHang");
 		  			winHang.innerHTML=("You are hanged!!!");
-		  			setTimeout(endMiss, 1000);
+		  			playAudio(riggity);
+		  			setTimeout(endMiss, 2500);
 		  }	 
 		}
 	}
@@ -119,6 +128,7 @@ document.onkeyup = function(event) {
 		missCount = 0;
 		guessLeft = 6;
 		hitCount = 0;
+		guessCount = 0;
 		document.getElementById("guessLeft").innerHTML = ("Remaining Guesses: " + guessLeft);
 		document.getElementById("letterSpot").innerHTML="";
 		document.getElementById("hangman");
