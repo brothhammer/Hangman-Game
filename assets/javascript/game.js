@@ -89,9 +89,10 @@ document.onkeyup = function(event) {
 		  			showLetterCount();
 
 		  		hitCount++;
-
 		  	}
+
 		  	if(randomWord.length === hitCount){
+		  		hitCount = "string to prevent hitCount form increasing for additional letter pressing after game ends";
 				winHang = document.getElementById("winHang");
 					winHang.innerHTML=("You have guessed correctly!!!");
 		 			playAudio(yesF);
@@ -114,6 +115,7 @@ document.onkeyup = function(event) {
 		  	hangman.src = "assets/images/hangman"+missCount+".png";
 		  }
 			if (missCount === 6){
+				hitCount = "string to fix bug";
 		  		winHang = document.getElementById("winHang");
 		  			winHang.innerHTML=("You are hanged!!!");
 		  			playAudio(riggity);
